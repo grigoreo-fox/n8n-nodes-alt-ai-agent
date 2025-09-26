@@ -13,7 +13,7 @@
     },
     "repository": {
         "type": "git",
-        "url": ""
+        "url": "https://github.com/grigoreo-fox/n8n-nodes-alt-ai-agent.git"
     },
     "scripts": {
         "build": "n8n-node build",
