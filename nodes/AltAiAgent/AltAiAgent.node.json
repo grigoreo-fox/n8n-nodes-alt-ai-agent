@@ -1,0 +1,17 @@
+{
+	"node": "@grigoreo-fox/n8n-nodes-alt-ai-agent",
+	"nodeVersion": "1.0",
+	"codexVersion": "1.0",
+	"categories": ["AI"],
+	"alias": ["LangChain", "Chat", "Conversational", "Plan and Execute", "ReAct", "Tools"],
+	"subcategories": {
+		"AI": ["Agents", "Root Nodes"],
+	},
+	"resources": {
+		"primaryDocumentation": [
+			{
+				"url": "https://github.com/grigoreo-fox/n8n-nodes-alt-ai-agent"
+			}
+		]
+	}
+}
