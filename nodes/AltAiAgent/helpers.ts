@@ -1,7 +1,6 @@
 import { BaseChatModel } from "@langchain/core/language_models/chat_models";
 import { BaseLLM } from "@langchain/core/language_models/llms";
 import type { Tool } from '@langchain/core/tools';
-// eslint-disable-next-line import-x/no-unresolved
 import { Toolkit } from 'langchain/agents';
 import { IExecuteFunctions, ISupplyDataFunctions, IWebhookFunctions, NodeConnectionTypes, NodeOperationError } from "n8n-workflow";
 import { N8nTool } from "./N8nTool";
@@ -70,7 +69,6 @@ export const getConnectedTools = async (
 		}
 
 		if (convertStructuredTool && tool instanceof N8nTool) {
-			// @ts-expect-error - ignore TypeScript error for this line
 			finalTools.push(tool.asDynamicTool());
 		} else {
 			finalTools.push(tool);

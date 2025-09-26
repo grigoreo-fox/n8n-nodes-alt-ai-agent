@@ -69,11 +69,7 @@ export class AltAiAgent implements INodeType {
 				displayName: 'Options',
 				name: 'options',
 				type: 'collection',
-				default: {
-					saveToolCallsToMemory: true,
-					returnIntermediateSteps: true,
-					passthroughBinaryImages: true,
-				},
+				default: {},
 				placeholder: 'Add Option',
 				options: [
 					{
@@ -159,12 +155,18 @@ export class AltAiAgent implements INodeType {
 				// const outputParser = undefined; //TODO: implement output parser
 
 				const tools = await getTools(this);
-				const options = this.getNodeParameter('options', itemIndex, {}) as {
+				let options = this.getNodeParameter('options', itemIndex, {}) as {
 					systemMessage?: string;
 					saveToolCallsToMemory?: boolean;
 					maxIterations?: number;
 					returnIntermediateSteps?: boolean;
 					passthroughBinaryImages?: boolean;
+				};
+				options = { // TODO: check if this is optimal way to set defaults
+					...options,
+					saveToolCallsToMemory: options.saveToolCallsToMemory ?? true,
+					returnIntermediateSteps: options.returnIntermediateSteps ?? true,
+					passthroughBinaryImages: options.passthroughBinaryImages ?? true,
 				};
 
 				// Prepare the prompt messages and prompt template.

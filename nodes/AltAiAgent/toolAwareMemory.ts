@@ -48,7 +48,7 @@ function buildToolSummary(
     const obs = fmtObs(s.observation, maxObservationLen);
     return `tool call: ${name}(${args}) => ${obs}`;
   });
-  return lines.join("\n");
+  return lines.join("\n\n");
 }
 
 /* ---------- main wrapper ---------- */

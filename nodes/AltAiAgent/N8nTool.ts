@@ -73,7 +73,9 @@ ALL parameters marked as required must be provided`;
   return description;
 };
 
-export class N8nTool extends DynamicStructuredTool<ZodObjectAny> { //@ts-expect-error - ignore TypeScript error for this line
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore - suppress type instantiation depth error
+export class N8nTool extends DynamicStructuredTool<ZodObjectAny> {
   constructor(
     private context: ISupplyDataFunctions,
     fields: DynamicStructuredToolInput<ZodObjectAny>,
