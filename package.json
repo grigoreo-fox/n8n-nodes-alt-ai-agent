@@ -1,6 +1,6 @@
 {
     "name": "@grigoreo-fox/n8n-nodes-alt-ai-agent",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "AltAiAgent n8n community node",
     "license": "MIT",
     "homepage": "https://github.com/grigoreo-fox/n8n-nodes-alt-ai-agent",

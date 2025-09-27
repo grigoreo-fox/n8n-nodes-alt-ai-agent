@@ -149,6 +149,8 @@ export class AltAiAgent implements INodeType {
 				const itemIndex = i + batchItemIndex;
 
 				const input = this.getNodeParameter('text', itemIndex, '');
+				const systemMessage = this.getNodeParameter('systemMessage', itemIndex, SYSTEM_MESSAGE);
+				
 				if (input === undefined) {
 					throw new NodeOperationError(this.getNode(), 'The "text" parameter is empty.');
 				}
@@ -156,7 +158,6 @@ export class AltAiAgent implements INodeType {
 
 				const tools = await getTools(this);
 				let options = this.getNodeParameter('options', itemIndex, {}) as {
-					systemMessage?: string;
 					saveToolCallsToMemory?: boolean;
 					maxIterations?: number;
 					returnIntermediateSteps?: boolean;
@@ -171,7 +172,6 @@ export class AltAiAgent implements INodeType {
 
 				// Prepare the prompt messages and prompt template.
 				const messages = await prepareMessages(this, itemIndex, {
-					systemMessage: options.systemMessage,
 					passthroughBinaryImages: options.passthroughBinaryImages ?? true,
 					// outputParser, // TODO implement parser
 				});
@@ -191,7 +191,7 @@ export class AltAiAgent implements INodeType {
 				// Invoke with fallback logic
 				const invokeParams = {
 					input,
-					system_message: options.systemMessage ?? SYSTEM_MESSAGE,
+					system_message: systemMessage,
 					formatting_instructions:
 						'IMPORTANT: For your response to user, you MUST use the `format_final_json_response` tool with your complete answer formatted according to the required schema. Do not attempt to format the JSON manually - always use this tool. Your response will be rejected if it is not properly formatted through this tool. Only use this tool once you are ready to provide your final answer.',
 				};

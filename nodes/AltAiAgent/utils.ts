@@ -105,22 +105,18 @@ export async function prepareMessages(
 	ctx: IExecuteFunctions | ISupplyDataFunctions,
 	itemIndex: number,
 	options: {
-		systemMessage?: string;
 		passthroughBinaryImages?: boolean;
 		// outputParser?: N8nOutputParser; // TODO implement parser
 	},
 ): Promise<BaseMessagePromptTemplateLike[]> {
-	const useSystemMessage = options.systemMessage ?? ctx.getNode().typeVersion < 1.9;
-
 	const messages: BaseMessagePromptTemplateLike[] = [];
 
-	if (useSystemMessage) {
-		messages.push([
-			'system',
-			// `{system_message}${options.outputParser ? '\n\n{formatting_instructions}' : ''}`, // TODO implement parser
-			`{system_message}`,
-		]);
-	} 
+	
+	messages.push([
+		'system',
+		// `{system_message}${options.outputParser ? '\n\n{formatting_instructions}' : ''}`, // TODO implement parser
+		`{system_message}`,
+	]);
 	// else if (options.outputParser) { // TODO implement parser
 	// 	messages.push(['system', '{formatting_instructions}']);
 	// }
